@@ -1,5 +1,9 @@
 package se.authserver.v1.metadata.domain.repository;
 
-public interface MetadataRepositoryProtocol {
+import se.authserver.v1.metadata.domain.model.Resource;
+import se.authserver.v1.metadata.domain.model.ResourceMetadata;
 
+public interface MetadataRepositoryProtocol {
+  ResourceMetadata readOne(String name, Resource resource);
+  ResourceMetadata create(ResourceMetadata resourceMetadata);
 }
