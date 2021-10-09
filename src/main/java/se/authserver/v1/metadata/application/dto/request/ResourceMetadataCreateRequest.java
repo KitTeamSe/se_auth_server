@@ -9,7 +9,7 @@ import se.authserver.v1.metadata.domain.model.Resource;
 
 @Getter
 @NoArgsConstructor
-@ApiModel("서비스 생성 요청")
+@ApiModel("리소스 별 데이터 생성 요청")
 public class ResourceMetadataCreateRequest {
 
   @NotBlank

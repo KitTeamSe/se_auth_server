@@ -13,13 +13,13 @@ import se.authserver.v1.metadata.application.dto.request.ResourceMetadataCreateR
 import se.authserver.v1.metadata.application.service.ResourceMetadataCreateService;
 
 @RestController
-@Api(tags = "서비스 관리")
+@Api(tags = "리소스 별 데이터 관리")
 @RequestMapping("/api/v1")
-public class MetadataApiController {
+public class ResourceMetadataApiController {
 
   private final ResourceMetadataCreateService resourceMetadataCreateService;
 
-  public MetadataApiController(
+  public ResourceMetadataApiController(
       ResourceMetadataCreateService resourceMetadataCreateService) {
     this.resourceMetadataCreateService = resourceMetadataCreateService;
   }
