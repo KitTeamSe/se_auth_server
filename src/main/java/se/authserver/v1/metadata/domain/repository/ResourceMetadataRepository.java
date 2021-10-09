@@ -1,5 +1,6 @@
 package se.authserver.v1.metadata.domain.repository;
 
+import java.util.List;
 import org.springframework.stereotype.Repository;
 import se.authserver.v1.metadata.domain.model.Resource;
 import se.authserver.v1.metadata.domain.model.ResourceMetadata;
@@ -23,5 +24,10 @@ public class ResourceMetadataRepository implements MetadataRepositoryProtocol {
   @Override
   public ResourceMetadata readOne(String name, Resource resource) {
     return jpa.findByResourceAndName(resource, name);
+  }
+
+  @Override
+  public List<ResourceMetadata> readAllByResource(Resource resource) {
+    return jpa.findAllByResource(resource);
   }
 }
