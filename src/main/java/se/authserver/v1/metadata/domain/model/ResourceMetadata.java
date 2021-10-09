@@ -15,9 +15,9 @@ import se.authserver.v1.common.domain.model.BaseEntity;
 @NoArgsConstructor
 public class ResourceMetadata extends BaseEntity {
 
-  public ResourceMetadata(Resource resource, String name) {
-    this.resource = resource;
+  public ResourceMetadata(String name, Resource resource) {
     this.name = name;
+    this.resource = resource;
   }
 
   @Id @GeneratedValue

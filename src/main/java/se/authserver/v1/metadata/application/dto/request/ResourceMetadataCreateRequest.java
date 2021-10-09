@@ -12,6 +12,11 @@ import se.authserver.v1.metadata.domain.model.Resource;
 @ApiModel("리소스 별 데이터 생성 요청")
 public class ResourceMetadataCreateRequest {
 
+  public ResourceMetadataCreateRequest(String name, Resource resource) {
+    this.name = name;
+    this.resource = resource;
+  }
+
   @NotBlank
   String name;
 

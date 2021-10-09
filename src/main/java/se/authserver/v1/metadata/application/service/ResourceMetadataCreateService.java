@@ -9,6 +9,7 @@ import se.authserver.v1.metadata.domain.repository.MetadataRepositoryProtocol;
 
 @Service
 public class ResourceMetadataCreateService {
+
   private final MetadataRepositoryProtocol metadataRepositoryProtocol;
 
   public ResourceMetadataCreateService(
@@ -20,13 +21,14 @@ public class ResourceMetadataCreateService {
     Resource resource = request.getResource();
     String name = request.getName();
 
-    checkDuplicatedResourceMetadata(resource, name);
-    ResourceMetadata resourceMetadata = new ResourceMetadata(request.getResource(), request.getName());
-    return metadataRepositoryProtocol.create(resourceMetadata).getMetadataId();
+    checkDuplicatedResourceMetadata(name, resource);
+    return metadataRepositoryProtocol
+        .create(new ResourceMetadata(request.getName(), request.getResource()))
+        .getMetadataId();
   }
 
-  private void checkDuplicatedResourceMetadata(Resource resource, String name) {
-    if (metadataRepositoryProtocol.readOne(resource, name) != null) {
+  private void checkDuplicatedResourceMetadata(String name, Resource resource) {
+    if (metadataRepositoryProtocol.readOne(name, resource) != null) {
       throw new UniqueValueAlreadyExistsException("이미 등록된 데이터입니다.");
     }
   }

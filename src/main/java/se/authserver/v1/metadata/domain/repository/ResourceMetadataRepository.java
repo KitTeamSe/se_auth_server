@@ -21,7 +21,7 @@ public class ResourceMetadataRepository implements MetadataRepositoryProtocol {
   }
 
   @Override
-  public ResourceMetadata readOne(Resource resource, String name) {
+  public ResourceMetadata readOne(String name, Resource resource) {
     return jpa.findByResourceAndName(resource, name);
   }
 }
