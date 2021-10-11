@@ -18,8 +18,8 @@ public class ResourceMetadataCreateRequest {
   }
 
   @NotBlank
-  String name;
+  private String name;
 
   @ApiModelProperty(notes = "ACCOUNT")
-  Resource resource;
+  private Resource resource;
 }
