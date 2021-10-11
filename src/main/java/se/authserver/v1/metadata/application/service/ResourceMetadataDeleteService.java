@@ -15,13 +15,10 @@ public class ResourceMetadataDeleteService {
     this.metadataRepositoryProtocol = metadataRepositoryProtocol;
   }
 
-  public boolean delete(Long id) {
-    // 존재하는지 검사
+  public void delete(Long id) {
     ResourceMetadata resourceMetadata
         = metadataRepositoryProtocol.readById(id)
         .orElseThrow(() -> new NotFoundException("존재하지 않는 메타 데이터입니다."));
-
     metadataRepositoryProtocol.delete(resourceMetadata);
-    return true;
   }
 }
