@@ -6,6 +6,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import se.authserver.v1.common.domain.model.BaseEntity;
@@ -13,19 +15,20 @@ import se.authserver.v1.common.domain.model.BaseEntity;
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(indexes = @Index(columnList = "resource, name"))
 public class ResourceMetadata extends BaseEntity {
 
   public ResourceMetadata(String name, Resource resource) {
     this.name = name;
     this.resource = resource;
   }
-
   public void update(String name, Resource resource) {
     this.name = name;
     this.resource = resource;
   }
 
-  @Id @GeneratedValue
+  @Id
+  @GeneratedValue
   private Long metadataId;
 
   @Column(length = 45, nullable = false)

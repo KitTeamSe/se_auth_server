@@ -13,5 +13,7 @@ public interface MetadataRepositoryProtocol {
 
   Optional<ResourceMetadata> readById(Long id);
 
+  void delete(ResourceMetadata resourceMetadata);
+
   List<ResourceMetadata> readAllByResource(Resource resource);
 }

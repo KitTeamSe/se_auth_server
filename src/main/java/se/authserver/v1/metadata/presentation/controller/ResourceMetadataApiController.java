@@ -4,7 +4,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +19,7 @@ import se.authserver.v1.metadata.application.dto.ResourceMetadataReadDto;
 import se.authserver.v1.metadata.application.dto.request.ResourceMetadataCreateRequest;
 import se.authserver.v1.metadata.application.dto.request.ResourceMetadataUpdateRequest;
 import se.authserver.v1.metadata.application.service.ResourceMetadataCreateService;
+import se.authserver.v1.metadata.application.service.ResourceMetadataDeleteService;
 import se.authserver.v1.metadata.application.service.ResourceMetadataReadService;
 import se.authserver.v1.metadata.application.service.ResourceMetadataUpdateService;
 import se.authserver.v1.metadata.domain.model.Resource;
@@ -29,14 +32,17 @@ public class ResourceMetadataApiController {
   private final ResourceMetadataCreateService resourceMetadataCreateService;
   private final ResourceMetadataUpdateService resourceMetadataUpdateService;
   private final ResourceMetadataReadService resourceMetadataReadService;
+  private final ResourceMetadataDeleteService resourceMetadataDeleteService;
 
   public ResourceMetadataApiController(
       ResourceMetadataCreateService resourceMetadataCreateService,
       ResourceMetadataUpdateService resourceMetadataUpdateService,
-      ResourceMetadataReadService resourceMetadataReadService) {
+      ResourceMetadataReadService resourceMetadataReadService,
+      ResourceMetadataDeleteService resourceMetadataDeleteService) {
     this.resourceMetadataCreateService = resourceMetadataCreateService;
     this.resourceMetadataUpdateService = resourceMetadataUpdateService;
     this.resourceMetadataReadService = resourceMetadataReadService;
+    this.resourceMetadataDeleteService = resourceMetadataDeleteService;
   }
 
   @PostMapping("/metadata")
@@ -53,6 +59,14 @@ public class ResourceMetadataApiController {
   public Response<Long> update(@RequestBody ResourceMetadataUpdateRequest request) {
     return new Response<>(HttpStatus.OK, "성공적으로 수정하였습니다.",
         resourceMetadataUpdateService.update(request));
+  }
+
+  @DeleteMapping("/metadata/{id}")
+  @ResponseStatus(HttpStatus.OK)
+  @ApiOperation(value = "데이터 삭제")
+  public Response delete(@PathVariable(value = "id") Long id) {
+    resourceMetadataDeleteService.delete(id);
+    return new Response(HttpStatus.OK, "성공적으로 삭제하였습니다.");
   }
 
   @GetMapping("/metadata")

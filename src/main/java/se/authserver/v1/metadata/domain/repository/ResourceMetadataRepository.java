@@ -33,6 +33,11 @@ public class ResourceMetadataRepository implements MetadataRepositoryProtocol {
   }
 
   @Override
+  public void delete(ResourceMetadata resourceMetadata) {
+    jpa.delete(resourceMetadata);
+  }
+
+  @Override
   public List<ResourceMetadata> readAllByResource(Resource resource) {
     return jpa.findAllByResource(resource);
   }
