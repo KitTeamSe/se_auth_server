@@ -35,7 +35,7 @@ public class ResourceMetadataCreateServiceTest {
         = new ResourceMetadataCreateRequest("name", Resource.ACCOUNT);
     given(metadataRepositoryProtocol.readOne(request.getName(), request.getResource()))
         .willReturn(null);
-    given(metadataRepositoryProtocol.create(any(ResourceMetadata.class)))
+    given(metadataRepositoryProtocol.save(any(ResourceMetadata.class)))
         .willReturn(new ResourceMetadata(request.getName(), request.getResource()));
     // when, then
     assertDoesNotThrow(() -> resourceMetadataCreateService.create(request));

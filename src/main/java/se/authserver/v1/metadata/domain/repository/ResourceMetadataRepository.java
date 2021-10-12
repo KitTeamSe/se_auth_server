@@ -18,7 +18,7 @@ public class ResourceMetadataRepository implements MetadataRepositoryProtocol {
   }
 
   @Override
-  public ResourceMetadata create(ResourceMetadata resourceMetadata) {
+  public ResourceMetadata save(ResourceMetadata resourceMetadata) {
     return jpa.save(resourceMetadata);
   }
 

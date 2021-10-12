@@ -7,7 +7,7 @@ import se.authserver.v1.metadata.domain.model.ResourceMetadata;
 
 public interface MetadataRepositoryProtocol {
 
-  ResourceMetadata create(ResourceMetadata resourceMetadata);
+  ResourceMetadata save(ResourceMetadata resourceMetadata);
 
   ResourceMetadata readOne(String name, Resource resource);
 

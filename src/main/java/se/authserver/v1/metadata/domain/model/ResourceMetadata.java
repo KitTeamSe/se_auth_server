@@ -22,6 +22,10 @@ public class ResourceMetadata extends BaseEntity {
     this.name = name;
     this.resource = resource;
   }
+  public void update(String name, Resource resource) {
+    this.name = name;
+    this.resource = resource;
+  }
 
   @Id
   @GeneratedValue
@@ -33,6 +37,4 @@ public class ResourceMetadata extends BaseEntity {
 
   @Column(length = 45, nullable = false)
   private String name;
-
-  // TODO 필요한 속성 추가
 }

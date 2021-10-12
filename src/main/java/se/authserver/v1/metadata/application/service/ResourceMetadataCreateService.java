@@ -23,7 +23,7 @@ public class ResourceMetadataCreateService {
 
     checkDuplicatedResourceMetadata(name, resource);
     return metadataRepositoryProtocol
-        .create(new ResourceMetadata(request.getName(), request.getResource()))
+        .save(new ResourceMetadata(request.getName(), request.getResource()))
         .getMetadataId();
   }
 
