@@ -2,6 +2,7 @@ package com.se.authserver.v1.ResourceMetadataService;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
 
@@ -34,12 +35,11 @@ public class ResourceMetadataUpdateServiceTest {
     ResourceMetadata resourceMetadata = new ResourceMetadata("name", Resource.ACCOUNT);
     given(metadataRepositoryProtocol.readById(request.getMetadataId())).willReturn(
         java.util.Optional.of(resourceMetadata));
+    given(metadataRepositoryProtocol.save(resourceMetadata))
+        .willReturn(new ResourceMetadata("name2", Resource.ACCOUNT));
 
-    // when
-    Long id = resourceMetadataUpdateService.update(request);
-
-    // then
-    assertThat(id, is(1L));
+    // when, then
+    assertDoesNotThrow(() -> resourceMetadataUpdateService.update(request));
   }
 
   @Test
