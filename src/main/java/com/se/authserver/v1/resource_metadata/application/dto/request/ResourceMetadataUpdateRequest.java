@@ -1,6 +1,6 @@
-package com.se.authserver.v1.metadata.application.dto.request;
+package com.se.authserver.v1.resource_metadata.application.dto.request;
 
-import com.se.authserver.v1.metadata.domain.model.Resource;
+import com.se.authserver.v1.resource_metadata.domain.model.Resource;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.NotBlank;

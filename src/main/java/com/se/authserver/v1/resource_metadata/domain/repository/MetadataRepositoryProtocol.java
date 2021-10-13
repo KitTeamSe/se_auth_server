@@ -1,7 +1,7 @@
-package com.se.authserver.v1.metadata.domain.repository;
+package com.se.authserver.v1.resource_metadata.domain.repository;
 
-import com.se.authserver.v1.metadata.domain.model.Resource;
-import com.se.authserver.v1.metadata.domain.model.ResourceMetadata;
+import com.se.authserver.v1.resource_metadata.domain.model.Resource;
+import com.se.authserver.v1.resource_metadata.domain.model.ResourceMetadata;
 import java.util.List;
 import java.util.Optional;
 

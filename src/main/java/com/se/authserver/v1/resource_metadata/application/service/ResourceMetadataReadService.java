@@ -1,11 +1,11 @@
-package com.se.authserver.v1.metadata.application.service;
+package com.se.authserver.v1.resource_metadata.application.service;
 
-import com.se.authserver.v1.metadata.application.dto.ResourceMetadataReadDto;
+import com.se.authserver.v1.resource_metadata.application.dto.ResourceMetadataReadDto;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
-import com.se.authserver.v1.metadata.domain.model.Resource;
-import com.se.authserver.v1.metadata.domain.repository.MetadataRepositoryProtocol;
+import com.se.authserver.v1.resource_metadata.domain.model.Resource;
+import com.se.authserver.v1.resource_metadata.domain.repository.MetadataRepositoryProtocol;
 
 @Service
 public class ResourceMetadataReadService {

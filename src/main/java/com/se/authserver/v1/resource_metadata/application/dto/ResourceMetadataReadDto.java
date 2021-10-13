@@ -1,11 +1,11 @@
-package com.se.authserver.v1.metadata.application.dto;
+package com.se.authserver.v1.resource_metadata.application.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import com.se.authserver.v1.metadata.domain.model.Resource;
+import com.se.authserver.v1.resource_metadata.domain.model.Resource;
 
 @Getter
 @NoArgsConstructor

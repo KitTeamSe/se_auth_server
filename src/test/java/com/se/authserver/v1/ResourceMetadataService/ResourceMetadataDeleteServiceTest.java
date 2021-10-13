@@ -8,15 +8,15 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
 
 import com.se.authserver.v1.common.domain.exception.NotFoundException;
-import com.se.authserver.v1.metadata.domain.model.Resource;
-import com.se.authserver.v1.metadata.domain.model.ResourceMetadata;
-import com.se.authserver.v1.metadata.domain.repository.MetadataRepositoryProtocol;
+import com.se.authserver.v1.resource_metadata.domain.model.Resource;
+import com.se.authserver.v1.resource_metadata.domain.model.ResourceMetadata;
+import com.se.authserver.v1.resource_metadata.domain.repository.MetadataRepositoryProtocol;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.se.authserver.v1.metadata.application.service.ResourceMetadataDeleteService;
+import com.se.authserver.v1.resource_metadata.application.service.ResourceMetadataDeleteService;
 
 @ExtendWith(MockitoExtension.class)
 public class ResourceMetadataDeleteServiceTest {

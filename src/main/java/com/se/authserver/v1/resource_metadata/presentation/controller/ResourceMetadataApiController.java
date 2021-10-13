@@ -1,6 +1,6 @@
-package com.se.authserver.v1.metadata.presentation.controller;
+package com.se.authserver.v1.resource_metadata.presentation.controller;
 
-import com.se.authserver.v1.metadata.application.dto.request.ResourceMetadataCreateRequest;
+import com.se.authserver.v1.resource_metadata.application.dto.request.ResourceMetadataCreateRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.se.authserver.v1.common.presentation.response.Response;
-import com.se.authserver.v1.metadata.application.dto.ResourceMetadataReadDto;
-import com.se.authserver.v1.metadata.application.dto.request.ResourceMetadataUpdateRequest;
-import com.se.authserver.v1.metadata.application.service.ResourceMetadataCreateService;
-import com.se.authserver.v1.metadata.application.service.ResourceMetadataDeleteService;
-import com.se.authserver.v1.metadata.application.service.ResourceMetadataReadService;
-import com.se.authserver.v1.metadata.application.service.ResourceMetadataUpdateService;
-import com.se.authserver.v1.metadata.domain.model.Resource;
+import com.se.authserver.v1.resource_metadata.application.dto.ResourceMetadataReadDto;
+import com.se.authserver.v1.resource_metadata.application.dto.request.ResourceMetadataUpdateRequest;
+import com.se.authserver.v1.resource_metadata.application.service.ResourceMetadataCreateService;
+import com.se.authserver.v1.resource_metadata.application.service.ResourceMetadataDeleteService;
+import com.se.authserver.v1.resource_metadata.application.service.ResourceMetadataReadService;
+import com.se.authserver.v1.resource_metadata.application.service.ResourceMetadataUpdateService;
+import com.se.authserver.v1.resource_metadata.domain.model.Resource;
 
 @RestController
 @Api(tags = "리소스 별 데이터 관리")
