@@ -6,6 +6,7 @@ import com.se.authserver.v1.app.domain.model.App;
 import com.se.authserver.v1.app.domain.repository.AppRepositoryProtocol;
 import com.se.authserver.v1.app_callback_url.domain.model.CallbackUrl;
 import com.se.authserver.v1.common.domain.exception.NotFoundException;
+import com.se.authserver.v1.common.domain.exception.PreconditionFailedException;
 import com.se.authserver.v1.metadata.domain.repository.MetadataRepositoryProtocol;
 import com.se.authserver.v1.resource_metadata_app_mapping.domain.model.ResourceMetadataAppMapping;
 import java.nio.charset.StandardCharsets;
@@ -60,6 +61,10 @@ public class AppCreateService {
 
   private List<CallbackUrl> getCallbackUrlsFromRequest
       (AppCreateRequest.Request request, Long appId) {
+    if (request.getCallbackUrls() == null || request.getCallbackUrls().size() == 0) {
+     throw new PreconditionFailedException("최소 한 개 이상의 callback URL이 필요합니다.");
+    }
+
     return request
         .getCallbackUrls()
         .stream()
