@@ -7,16 +7,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
 
 import com.se.authserver.v1.common.domain.exception.NotFoundException;
-import com.se.authserver.v1.metadata.domain.model.Resource;
-import com.se.authserver.v1.metadata.domain.model.ResourceMetadata;
-import com.se.authserver.v1.metadata.domain.repository.MetadataRepositoryProtocol;
+import com.se.authserver.v1.resource_metadata.domain.model.Resource;
+import com.se.authserver.v1.resource_metadata.domain.model.ResourceMetadata;
+import com.se.authserver.v1.resource_metadata.domain.repository.MetadataRepositoryProtocol;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.se.authserver.v1.metadata.application.dto.request.ResourceMetadataUpdateRequest;
-import com.se.authserver.v1.metadata.application.service.ResourceMetadataUpdateService;
+import com.se.authserver.v1.resource_metadata.application.dto.request.ResourceMetadataUpdateRequest;
+import com.se.authserver.v1.resource_metadata.application.service.ResourceMetadataUpdateService;
 
 @ExtendWith(MockitoExtension.class)
 public class ResourceMetadataUpdateServiceTest {

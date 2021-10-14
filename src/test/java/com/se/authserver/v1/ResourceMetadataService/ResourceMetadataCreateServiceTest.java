@@ -13,11 +13,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import com.se.authserver.v1.common.domain.exception.UniqueValueAlreadyExistsException;
-import com.se.authserver.v1.metadata.application.dto.request.ResourceMetadataCreateRequest;
-import com.se.authserver.v1.metadata.application.service.ResourceMetadataCreateService;
-import com.se.authserver.v1.metadata.domain.model.Resource;
-import com.se.authserver.v1.metadata.domain.model.ResourceMetadata;
-import com.se.authserver.v1.metadata.domain.repository.MetadataRepositoryProtocol;
+import com.se.authserver.v1.resource_metadata.application.dto.request.ResourceMetadataCreateRequest;
+import com.se.authserver.v1.resource_metadata.application.service.ResourceMetadataCreateService;
+import com.se.authserver.v1.resource_metadata.domain.model.Resource;
+import com.se.authserver.v1.resource_metadata.domain.model.ResourceMetadata;
+import com.se.authserver.v1.resource_metadata.domain.repository.MetadataRepositoryProtocol;
 
 @ExtendWith(MockitoExtension.class)
 public class ResourceMetadataCreateServiceTest {

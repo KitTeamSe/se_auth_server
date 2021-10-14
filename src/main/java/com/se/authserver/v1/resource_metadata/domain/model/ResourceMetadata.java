@@ -1,4 +1,4 @@
-package com.se.authserver.v1.metadata.domain.model;
+package com.se.authserver.v1.resource_metadata.domain.model;
 
 import com.se.authserver.v1.common.domain.model.BaseEntity;
 import javax.persistence.Column;

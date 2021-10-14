@@ -13,11 +13,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
 
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.se.authserver.v1.metadata.application.dto.ResourceMetadataReadDto;
-import com.se.authserver.v1.metadata.application.service.ResourceMetadataReadService;
-import com.se.authserver.v1.metadata.domain.model.Resource;
-import com.se.authserver.v1.metadata.domain.model.ResourceMetadata;
-import com.se.authserver.v1.metadata.domain.repository.MetadataRepositoryProtocol;
+import com.se.authserver.v1.resource_metadata.application.dto.ResourceMetadataReadDto;
+import com.se.authserver.v1.resource_metadata.application.service.ResourceMetadataReadService;
+import com.se.authserver.v1.resource_metadata.domain.model.Resource;
+import com.se.authserver.v1.resource_metadata.domain.model.ResourceMetadata;
+import com.se.authserver.v1.resource_metadata.domain.repository.MetadataRepositoryProtocol;
 
 @ExtendWith(MockitoExtension.class)
 public class ResourceMetadataReadServiceTest {

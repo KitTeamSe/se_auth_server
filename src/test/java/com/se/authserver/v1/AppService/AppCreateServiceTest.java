@@ -1,10 +1,10 @@
 package com.se.authserver.v1.AppService;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 import com.se.authserver.v1.app.application.dto.request.AppCreateRequest;
 import com.se.authserver.v1.app.application.dto.request.AppCreateRequest.Request;
@@ -15,15 +15,14 @@ import com.se.authserver.v1.app.domain.model.DevelopProgress;
 import com.se.authserver.v1.app.domain.repository.AppRepositoryProtocol;
 import com.se.authserver.v1.common.domain.exception.NotFoundException;
 import com.se.authserver.v1.common.domain.exception.PreconditionFailedException;
-import com.se.authserver.v1.metadata.domain.model.Resource;
-import com.se.authserver.v1.metadata.domain.model.ResourceMetadata;
-import com.se.authserver.v1.metadata.domain.repository.MetadataRepositoryProtocol;
+import com.se.authserver.v1.resource_metadata.domain.model.Resource;
+import com.se.authserver.v1.resource_metadata.domain.model.ResourceMetadata;
+import com.se.authserver.v1.resource_metadata.domain.repository.MetadataRepositoryProtocol;
 import com.se.authserver.v1.resource_metadata_app_mapping.domain.model.IsEssentialInfo;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
