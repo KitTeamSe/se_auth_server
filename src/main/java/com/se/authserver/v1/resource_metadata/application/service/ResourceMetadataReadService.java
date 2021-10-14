@@ -19,7 +19,7 @@ public class ResourceMetadataReadService {
   public List<ResourceMetadataReadDto> readAllByResource(Resource resource) {
       return metadataRepositoryProtocol.readAllByResource(resource)
           .stream().map(r -> ResourceMetadataReadDto.builder()
-              .metadata_id(r.getMetadataId())
+              .metadata_id(r.getResourceMetadataId())
               .name(r.getName())
               .resource(r.getResource())
               .build())

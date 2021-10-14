@@ -1,17 +1,32 @@
 package com.se.authserver.v1.app_callback_url.domain.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import com.se.authserver.v1.common.domain.model.BaseEntity;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
-public class CallbackUrl extends BaseEntity {
+@Getter
+@NoArgsConstructor
+public class CallbackUrl {
+
+  public CallbackUrl(Long appId, String url) {
+    this.appId = appId;
+    this.url = url;
+  }
 
   @Id
-  @GeneratedValue
-  private Long callbackUrlId;
+  @Column(name = "callback_url_id")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long callbackUrlId;
 
-  // TODO 필요한 속성 추가
+  @Column(name = "app_id", nullable = false)
+  private Long appId;
 
+  @Column(nullable = false)
+  private String url;
 }
+
