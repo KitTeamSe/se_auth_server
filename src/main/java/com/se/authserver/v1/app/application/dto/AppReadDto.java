@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.se.authserver.v1.app.domain.model.DevelopProgress;
 import com.se.authserver.v1.resource_metadata.domain.model.Resource;
 import com.se.authserver.v1.resource_metadata_app_mapping.domain.model.IsEssentialInfo;
+import io.swagger.annotations.ApiModel;
 import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,6 +17,7 @@ public class AppReadDto {
   @NoArgsConstructor
   @Builder
   @Getter
+  @ApiModel("애플리케이션 조회 응답")
   static public class Response {
 
     private Long appId;
