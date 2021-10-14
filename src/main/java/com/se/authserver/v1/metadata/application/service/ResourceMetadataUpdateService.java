@@ -21,6 +21,6 @@ public class ResourceMetadataUpdateService {
         .orElseThrow(() -> new NotFoundException("존재하지 않는 메타 데이터입니다."));
     resourceMetadata.update(request.getName(), request.getResource());
     resourceMetadata = metadataRepositoryProtocol.save(resourceMetadata);
-    return resourceMetadata.getMetadataId();
+    return resourceMetadata.getResourceMetadataId();
   }
 }
