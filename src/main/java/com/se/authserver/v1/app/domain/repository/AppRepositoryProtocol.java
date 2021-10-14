@@ -10,4 +10,6 @@ public interface AppRepositoryProtocol {
   App findByClientId(String clientId);
 
   Optional<App> findById(Long id);
+
+  void delete(App id);
 }
