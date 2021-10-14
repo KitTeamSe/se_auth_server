@@ -7,7 +7,7 @@ import com.se.authserver.v1.app.domain.repository.AppRepositoryProtocol;
 import com.se.authserver.v1.app_callback_url.domain.model.CallbackUrl;
 import com.se.authserver.v1.common.domain.exception.NotFoundException;
 import com.se.authserver.v1.common.domain.exception.PreconditionFailedException;
-import com.se.authserver.v1.metadata.domain.repository.MetadataRepositoryProtocol;
+import com.se.authserver.v1.resource_metadata.domain.repository.MetadataRepositoryProtocol;
 import com.se.authserver.v1.resource_metadata_app_mapping.domain.model.ResourceMetadataAppMapping;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;

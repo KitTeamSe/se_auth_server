@@ -1,6 +1,6 @@
 package com.se.authserver.v1.resource_metadata_app_mapping.domain.model;
 
-import com.se.authserver.v1.metadata.domain.model.ResourceMetadata;
+import com.se.authserver.v1.resource_metadata.domain.model.ResourceMetadata;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
