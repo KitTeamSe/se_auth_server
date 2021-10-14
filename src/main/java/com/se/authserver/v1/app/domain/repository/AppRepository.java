@@ -27,4 +27,9 @@ public class AppRepository implements AppRepositoryProtocol{
   public Optional<App> findById(Long id) {
     return jpa.findById(id);
   }
+
+  @Override
+  public void delete(App app) {
+    jpa.delete(app);
+  }
 }

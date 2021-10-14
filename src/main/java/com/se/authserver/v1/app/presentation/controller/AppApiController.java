@@ -3,11 +3,13 @@ package com.se.authserver.v1.app.presentation.controller;
 import com.se.authserver.v1.app.application.dto.AppReadDto;
 import com.se.authserver.v1.app.application.dto.request.AppCreateRequest;
 import com.se.authserver.v1.app.application.service.AppCreateService;
+import com.se.authserver.v1.app.application.service.AppDeleteService;
 import com.se.authserver.v1.app.application.service.AppReadService;
 import com.se.authserver.v1.common.presentation.response.Response;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,12 +24,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class AppApiController {
   private final AppCreateService appCreateService;
   private final AppReadService appReadService;
+  private final AppDeleteService appDeleteService;
 
   public AppApiController(
       AppCreateService appCreateService,
-      AppReadService appReadService) {
+      AppReadService appReadService,
+      AppDeleteService appDeleteService) {
     this.appCreateService = appCreateService;
     this.appReadService = appReadService;
+    this.appDeleteService = appDeleteService;
   }
 
   @PostMapping("/app")
@@ -36,6 +41,14 @@ public class AppApiController {
   public Response<Long> create(@RequestBody AppCreateRequest.Request request) {
 
     return new Response<>(HttpStatus.CREATED, "성공적으로 등록하였습니다.", appCreateService.create(request));
+  }
+
+  @DeleteMapping("/app/{id}")
+  @ResponseStatus(HttpStatus.OK)
+  @ApiOperation(value = "애플리케이션 삭제")
+  public Response delete(@PathVariable(value = "id") Long id) {
+    appDeleteService.delete(id);
+    return new Response(HttpStatus.OK, "성공적으로 삭제하였습니다.");
   }
 
   @GetMapping("/app/{id}")
