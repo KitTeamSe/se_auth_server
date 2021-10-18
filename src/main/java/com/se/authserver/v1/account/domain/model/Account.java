@@ -11,21 +11,23 @@ import com.se.authserver.v1.common.domain.model.BaseEntity;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
 public class Account extends BaseEntity {
 
   @Id
   @GeneratedValue
   private Long accountId;
 
-  @Size(min = 4, max = 20)
+  @Email
   @Column(nullable = false, unique = true)
-  private String idString;
+  private String email;
 
   @Column(nullable = false)
   private String password;
@@ -35,10 +37,6 @@ public class Account extends BaseEntity {
 
   @Column
   private String phone;
-
-  @Email
-  @Column(nullable = false, unique = true)
-  private String email;
 
   @Column(nullable = false)
   private LocalDateTime birth;
@@ -60,19 +58,23 @@ public class Account extends BaseEntity {
   @Column(unique = true)
   private String authorizedEmail;
 
-  public Account(String idString, String password, String identifier, String phone,
-      String email, LocalDateTime birth, String name,
-      Country country, String address, String studentId, String authorizedEmail) {
-    this.idString = idString;
+  @Column(nullable = false)
+  @Enumerated(EnumType.STRING)
+  private Authority authority;
+
+  public Account(String email, String password, String identifier, String phone,
+      LocalDateTime birth, String name, Country country, String address, String studentId,
+      String authorizedEmail, Authority authority) {
+    this.email = email;
     this.password = password;
     this.identifier = identifier;
     this.phone = phone;
-    this.email = email;
     this.birth = birth;
     this.name = name;
     this.country = country;
     this.address = address;
     this.studentId = studentId;
     this.authorizedEmail = authorizedEmail;
+    this.authority = authority;
   }
 }
