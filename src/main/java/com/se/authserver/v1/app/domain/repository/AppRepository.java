@@ -2,6 +2,7 @@ package com.se.authserver.v1.app.domain.repository;
 
 import com.se.authserver.v1.app.domain.model.App;
 import com.se.authserver.v1.app.infra.repository.AppJpaRepository;
+import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -20,5 +21,15 @@ public class AppRepository implements AppRepositoryProtocol{
   @Override
   public App findByClientId(String clientId) {
     return jpa.findByClientId(clientId);
+  }
+
+  @Override
+  public Optional<App> findById(Long id) {
+    return jpa.findById(id);
+  }
+
+  @Override
+  public void delete(App app) {
+    jpa.delete(app);
   }
 }
