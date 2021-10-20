@@ -1,5 +1,7 @@
 package com.se.authserver.v1.common.infra.security.provider;
 
+import com.se.authserver.v1.common.application.service.SecurityContextService;
+import com.se.authserver.v1.common.domain.exception.UnauthenticatedException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jws;
@@ -10,13 +12,15 @@ import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-import com.se.authserver.v1.common.domain.exception.UnauthenticatedException;
 
 @Component
 public class JwtTokenResolver {
 
-//  private final AccountContextService accountContextService;
+  private final SecurityContextService securityContextService;
 
   @Value("${spring.jwt.header}")
   private String AUTH_HEADER;
@@ -26,20 +30,20 @@ public class JwtTokenResolver {
 
   private final Long tokenExpirePeriod = 1000L * 60 * 60 * 2;   // 2시간
 
-//  @Autowired
-//  public JwtTokenResolver(AccountContextService accountContextService) {
-//    this.accountContextService = accountContextService;
-//  }
+  public JwtTokenResolver(
+      SecurityContextService securityContextService) {
+    this.securityContextService = securityContextService;
+  }
 
   @PostConstruct
   protected void init() {
     securityKey = Base64.getEncoder().encodeToString(securityKey.getBytes());
   }
 
-//  public Authentication getAuthentication(String token) {
-//    UserDetails userDetails = accountContextService.loadUserByUsername(getUserId(token));
-//    return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
-//  }
+  public Authentication getAuthentication(String token) {
+    UserDetails userDetails = securityContextService.loadUserByUsername(getUserId(token));
+    return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
+  }
 
   public String getUserId(String token) {
     return Jwts.parser().setSigningKey(securityKey).parseClaimsJws(token).getBody().getSubject();
@@ -64,7 +68,6 @@ public class JwtTokenResolver {
     }
   }
 
-  // TODO 인증서버 구축시 삭제
   public String createToken(String userId) {
     Claims claims = Jwts.claims().setSubject(userId);
     Date now = new Date();
@@ -76,8 +79,4 @@ public class JwtTokenResolver {
         .compact();
   }
 
-//  public Authentication getDefaultAuthentication() {
-//    UserDetails userDetails = accountContextService.loadDefaultGroupAuthorities(defaultGroup);
-//    return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
-//  }
 }
