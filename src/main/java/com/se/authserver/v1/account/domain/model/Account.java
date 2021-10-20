@@ -1,6 +1,6 @@
 package com.se.authserver.v1.account.domain.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -18,15 +18,14 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Builder
 public class Account extends BaseEntity {
 
   @Id
   @GeneratedValue
   private Long accountId;
 
-  @Email
   @Column(nullable = false, unique = true)
+  @Email
   private String email;
 
   @Column(nullable = false)
@@ -35,19 +34,19 @@ public class Account extends BaseEntity {
   @Column(nullable = false, unique = true)
   private String identifier;  //uuid
 
-  @Column
-  private String phone;
-
-  @Column(nullable = false)
-  private LocalDateTime birth;
-
   @Size(min = 2, max = 20)
   @Column(nullable = false)
   private String name;
 
   @Column(nullable = false)
+  private LocalDate birth;
+
+  @Column(nullable = false)
   @Enumerated(EnumType.STRING)
   private Country country;
+
+  @Column
+  private String phone;
 
   @Column
   private String address;
@@ -56,22 +55,24 @@ public class Account extends BaseEntity {
   private String studentId;
 
   @Column(unique = true)
+  @Email
   private String authorizedEmail;
 
   @Column(nullable = false)
   @Enumerated(EnumType.STRING)
   private Authority authority;
 
-  public Account(String email, String password, String identifier, String phone,
-      LocalDateTime birth, String name, Country country, String address, String studentId,
+  @Builder
+  public Account(String email, String password, String identifier, String name,
+      LocalDate birth, Country country, String phone, String address, String studentId,
       String authorizedEmail, Authority authority) {
     this.email = email;
     this.password = password;
     this.identifier = identifier;
-    this.phone = phone;
-    this.birth = birth;
     this.name = name;
+    this.birth = birth;
     this.country = country;
+    this.phone = phone;
     this.address = address;
     this.studentId = studentId;
     this.authorizedEmail = authorizedEmail;
