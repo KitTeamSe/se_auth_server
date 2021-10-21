@@ -27,6 +27,11 @@ public class AccountRepositoryProtocolImpl implements AccountRepositoryProtocol{
   }
 
   @Override
+  public Optional<Account> findByIdString(String idString) {
+    return jpa.findByIdString(idString);
+  }
+
+  @Override
   public Optional<Account> findByEmail(String email) {
     return jpa.findByEmail(email);
   }

@@ -6,6 +6,7 @@ import com.se.authserver.v1.account.domain.model.Account;
 
 public interface AccountJpaRepository extends JpaRepository<Account, Long> {
 
+  Optional<Account> findByIdString(String idString);
   Optional<Account> findByEmail(String email);
   Optional<Account> findByAuthorizedEmail(String email);
 

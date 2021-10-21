@@ -8,6 +8,7 @@ public interface AccountRepositoryProtocol {
   Account save(Account account);
 
   Optional<Account> findById(Long accountId);
+  Optional<Account> findByIdString(String idString);
   Optional<Account> findByEmail(String email);
   Optional<Account> findByAuthorizedEmail(String email);
 
