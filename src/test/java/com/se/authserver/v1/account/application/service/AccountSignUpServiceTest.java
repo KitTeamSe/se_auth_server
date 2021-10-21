@@ -34,8 +34,8 @@ class AccountSignUpServiceTest {
   public void 회원가입_성공 () throws Exception{
     // given
     AccountSignUpDto request = new AccountSignUpDto(
-        "user@email.com", "password", "이름", LocalDate.now(),
-        Country.KOR, "주소", "20170000", "user@email.com"
+        "user", "password", "이름", LocalDate.now(),
+        Country.KOR, "주소", "20170000", "user@email.com", "user@authemail.com"
     );
     // when
     // then
@@ -43,12 +43,23 @@ class AccountSignUpServiceTest {
   }
 
   @Test
+  public void 로그인_아이디_중복() throws Exception{
+    // given
+    AccountSignUpDto request = mock(AccountSignUpDto.class);
+    when(request.getIdString()).thenReturn("duplicatedIdString");
+    when(accountRepository.findByIdString(anyString())).thenReturn(Optional.ofNullable(mock(Account.class)));
+    // when
+    UniqueValueAlreadyExistsException exception =
+        assertThrows(UniqueValueAlreadyExistsException.class, () -> accountSignUpService.signUp(request));
+    // then
+    assertEquals("동일한 아이디가 이미 존재합니다", exception.getMessage());
+  }
+  @Test
   public void 이메일_계정_중복 () throws Exception{
     // given
     AccountSignUpDto request = mock(AccountSignUpDto.class);
     when(request.getEmail()).thenReturn("duplicated@email.com");
     when(accountRepository.findByEmail(anyString())).thenReturn(Optional.ofNullable(mock(Account.class)));
-
     // when
     UniqueValueAlreadyExistsException exception =
         assertThrows(UniqueValueAlreadyExistsException.class, () -> accountSignUpService.signUp(request));

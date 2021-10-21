@@ -27,6 +27,7 @@ public class AccountSignUpService {
   @Transactional
   public Long signUp(AccountSignUpDto request) {
 
+    validateIdString(request.getIdString());
     validateEmail(request.getEmail());
     validateAuthorizedEmail(request.getAuthorizedEmail());
 
@@ -46,6 +47,11 @@ public class AccountSignUpService {
 
     accountRepository.save(account);
     return account.getAccountId();
+  }
+
+  private void validateIdString(String idString) {
+    if (accountRepository.findByIdString(idString).isPresent())
+      throw new UniqueValueAlreadyExistsException("동일한 아이디가 이미 존재합니다");
   }
 
   private void validateEmail(String email) {
