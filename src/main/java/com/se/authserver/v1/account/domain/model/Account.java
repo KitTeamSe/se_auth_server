@@ -25,8 +25,7 @@ public class Account extends BaseEntity {
   private Long accountId;
 
   @Column(nullable = false, unique = true)
-  @Email
-  private String email;
+  private String idString;
 
   @Column(nullable = false)
   private String password;
@@ -54,6 +53,10 @@ public class Account extends BaseEntity {
   @Column
   private String studentId;
 
+  @Column(nullable = false, unique = true)
+  @Email
+  private String email;
+
   @Column(unique = true)
   @Email
   private String authorizedEmail;
@@ -63,10 +66,11 @@ public class Account extends BaseEntity {
   private Authority authority;
 
   @Builder
-  public Account(String email, String password, String identifier, String name,
+  public Account(String idString, String password, String identifier, String name,
       LocalDate birth, Country country, String phone, String address, String studentId,
-      String authorizedEmail, Authority authority) {
-    this.email = email;
+      String email, String authorizedEmail,
+      Authority authority) {
+    this.idString = idString;
     this.password = password;
     this.identifier = identifier;
     this.name = name;
@@ -75,6 +79,7 @@ public class Account extends BaseEntity {
     this.phone = phone;
     this.address = address;
     this.studentId = studentId;
+    this.email = email;
     this.authorizedEmail = authorizedEmail;
     this.authority = authority;
   }
