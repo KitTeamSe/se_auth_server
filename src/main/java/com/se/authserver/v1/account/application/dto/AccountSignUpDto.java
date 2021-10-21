@@ -19,8 +19,7 @@ public class AccountSignUpDto {
 
   @ApiModelProperty(example = "user@email.com", notes = "이메일(로그인아이디)")
   @NotNull
-  @Email
-  private String email;
+  private String idString;
 
   @ApiModelProperty(example = "password", notes = "비밀번호")
   @NotNull
@@ -45,22 +44,29 @@ public class AccountSignUpDto {
   @ApiModelProperty(example = "20170000", notes = "학번")
   private String studentId;
 
+  @ApiModelProperty(example = "user@email.com", notes = "이메일")
+  @NotNull
+  @Email
+  private String email;
+
   @ApiModelProperty(example = "user@email.com", notes = "인증된 이메일")
   @Email
   private String authorizedEmail;
 
-  public AccountSignUpDto(String email, String password, String name, LocalDate birth,
-      Country country, String address, String studentId, String authorizedEmail) {
-    this.email = email;
+  public AccountSignUpDto(String idString, String password, String name, LocalDate birth,
+      Country country, String address, String studentId, String email,
+      String authorizedEmail) {
+    this.idString = idString;
     this.password = password;
     this.name = name;
     this.birth = birth;
     this.country = country;
     this.address = address;
     this.studentId = studentId;
+    this.email = email;
     this.authorizedEmail = authorizedEmail;
   }
 
-  //  @ApiModelProperty(example = "01022223333", notes = "전화번호(당장은 사용 예정이 없는 컬럼입니다)")
+//  @ApiModelProperty(example = "01022223333", notes = "전화번호(당장은 사용 예정이 없는 컬럼입니다)")
   //  private String phone;
 }
