@@ -39,8 +39,8 @@ public class AccountSignUpService {
         .phone(null)
         .birth(request.getBirth())
         .country(request.getCountry())
-        .address(request.getAddress() == null ? null : request.getAddress())
-        .studentId(request.getStudentId() == null ? null : request.getStudentId())
+        .address(request.getAddress())
+        .studentId(request.getStudentId())
         .authorizedEmail(null)
         .authority(Authority.ROLE_USER)
         .build();
