@@ -7,6 +7,11 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class AccountSignInDto {
-  private String email;
+  private String idString;
   private String password;
+
+  public AccountSignInDto(String idString, String password) {
+    this.idString = idString;
+    this.password = password;
+  }
 }

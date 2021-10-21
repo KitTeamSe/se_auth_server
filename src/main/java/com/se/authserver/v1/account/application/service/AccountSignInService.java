@@ -28,8 +28,8 @@ public class AccountSignInService {
   }
 
   public String signIn(AccountSignInDto request) {
-    Account account = accountRepository.findByEmail(request.getEmail())
-        .orElseThrow(() -> new NotFoundException("존재하지 않는 계정"));
+    Account account = accountRepository.findByIdString(request.getIdString())
+        .orElseThrow(() -> new NotFoundException("존재하지 않는 아이디"));
 
     if (!passwordEncoder.matches(request.getPassword(), account.getPassword()))
       throw new UnauthenticatedException("비밀번호 오류");
