@@ -33,6 +33,12 @@ public class App extends BaseEntity {
     this.developProgress = developProgress;
   }
 
+  public void update(String name, DevelopProgress developProgress
+  ) {
+    this.name = name;
+    this.developProgress = developProgress;
+  }
+
   @Id
   @Column(name = "app_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,11 +57,11 @@ public class App extends BaseEntity {
   @Enumerated(EnumType.STRING)
   private DevelopProgress developProgress;
 
-  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name = "app_id")
   private List<ResourceMetadataAppMapping> resourceMetadataAppMappings;
 
-  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name = "app_id")
   private List<CallbackUrl> callbackUrls;
 

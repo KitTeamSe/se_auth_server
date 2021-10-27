@@ -35,7 +35,7 @@ public class ResourceMetadataAppMapping {
   @JoinColumn(name = "resource_metadata_id")
   private ResourceMetadata resourceMetadata;
 
-  @Column(name = "app_id", nullable = false)
+  @Column(name = "app_id")
   private Long appId;
 
   @Column(nullable = false)
