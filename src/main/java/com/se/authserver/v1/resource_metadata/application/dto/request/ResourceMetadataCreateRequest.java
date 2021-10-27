@@ -9,7 +9,7 @@ import com.se.authserver.v1.resource_metadata.domain.model.Resource;
 
 @Getter
 @NoArgsConstructor
-@ApiModel("리소스 별 데이터 생성 요청")
+@ApiModel(value = "리소스 별 데이터 생성 요청")
 public class ResourceMetadataCreateRequest {
 
   public ResourceMetadataCreateRequest(String name, Resource resource) {
