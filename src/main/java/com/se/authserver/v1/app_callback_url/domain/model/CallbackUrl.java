@@ -23,7 +23,7 @@ public class CallbackUrl {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long callbackUrlId;
 
-  @Column(name = "app_id", nullable = false)
+  @Column(name = "app_id")
   private Long appId;
 
   @Column(nullable = false)

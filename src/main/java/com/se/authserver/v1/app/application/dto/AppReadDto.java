@@ -17,7 +17,7 @@ public class AppReadDto {
   @NoArgsConstructor
   @Builder
   @Getter
-  @ApiModel("애플리케이션 조회 응답")
+  @ApiModel(value = "애플리케이션 조회 응답")
   static public class Response {
 
     private Long appId;
@@ -53,6 +53,7 @@ public class AppReadDto {
   @NoArgsConstructor
   @Builder
   @Getter
+  @ApiModel(value = "Callback URL 조회")
   static public class CallbackUrlDto {
 
     private Long callbackUrlId;
@@ -67,6 +68,7 @@ public class AppReadDto {
   @NoArgsConstructor
   @Builder
   @Getter
+  @ApiModel(value = "메타 데이터 조회")
   static public class ResourceMetadataDto {
 
     private Long resourceMetadataId;

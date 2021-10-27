@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-@ApiModel("리소스 별 데이터 수정 요청")
+@ApiModel(value = "리소스 별 데이터 수정 요청")
 public class ResourceMetadataUpdateRequest {
 
   public ResourceMetadataUpdateRequest(Long metadataId, String name,

@@ -113,8 +113,7 @@ public class AppCreateServiceTest {
     PreconditionFailedException preconditionFailedException
         = assertThrows(PreconditionFailedException.class, () -> appCreateService.create(request));
 
-    assertThat(preconditionFailedException.getMessage(), is("최소 한 개 이상의 callback URL이 필요합니다."));
-
     // then
+    assertThat(preconditionFailedException.getMessage(), is("최소 한 개 이상의 callback URL이 필요합니다."));
   }
 }
